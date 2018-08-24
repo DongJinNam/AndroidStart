@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvFrom"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#0000ff"
+            android:text="from"/>
+
+        <Spinner
+            android:id="@+id/sp_from_type"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#0000ff"
+            android:gravity="right"></Spinner>
+
+        <TextView
+            android:id="@+id/tvTo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#0000ff"
+            android:text="To"/>
+
+        <Spinner
+            android:id="@+id/sp_to_type"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#0000ff"
+            android:gravity="right"></Spinner>
+
+        <Button
+            android:id="@+id/btnTrans"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Go"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:text="입력" />
+
+    <ScrollView
+        android:id="@+id/sv_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:fillViewport="true">
+
+        <EditText
+            android:inputType="textMultiLine"
+            android:id="@+id/txtquestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:imeOptions="actionDone"
+            android:lines="5"
+            android:scrollHorizontally="false"
+            android:scrollbars="vertical"
+            android:textSize="15sp"
+            android:singleLine="false"/>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:text="출력" />
+
+    <ScrollView
+        android:id="@+id/sv_output"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:fillViewport="true">
+
+
+        <EditText
+            android:inputType="textMultiLine"
+            android:id="@+id/txtanswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:imeOptions="actionDone"
+            android:lines="5"
+            android:scrollHorizontally="false"
+            android:scrollbars="vertical"
+            android:textSize="15sp"
+            android:singleLine="false"/>
+
+    </ScrollView>
+
+</LinearLayout>

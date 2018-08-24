@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">myPapagoApp</string>
+    <string name="not_support">Not Support Translated Type</string>
+    <string name="caution">한국어(ko)-영어(en), 한국어(ko)-중국어 간체(zh-CN), 한국어(ko)-중국어 번체(zh-TW), 한국어(ko)-스페인어(es), 한국어(ko)-프랑스어(fr), 한국어(ko)-베트남어(vi), 한국어(ko)-태국어(th), 한국어(ko)-인도네시아어(id), 영어(en)-일본어(ja), 영어(en)-프랑스어(fr) 를 지원합니다. 처리한도 : 10,000글자/일 </string>
+    <string name="source_lan">참조 언어 :  </string>
+    <string name="target_lan">전환 언어 :  </string>
+</resources>
