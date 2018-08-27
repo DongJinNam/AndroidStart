@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     final String clientSecret = "sQIGQOACoF";
     List <String> languages;
     List <String> keywords;
+    List <LangVO> active_list;
 
     Handler handler = new Handler();
     int fromIndex = 0; // 시작 인덱스[한국어]
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EditText txtquestion = findViewById(R.id.txtquestion);
-        EditText txtanswer = findViewById(R.id.txtanswer);
         Button btnTrans = findViewById(R.id.btnTrans);
+        ListView listView = findViewById(R.id.list_view);
 
         // Open API 경고 문구.
         Toast.makeText(this, getString(R.string.caution), Toast.LENGTH_SHORT).show();
@@ -87,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 String str = getString(R.string.target_lan) + (String) langAdapter2.getItem(position);
                 toIndex = position;
                 Toast.makeText(MainActivity.this, str,Toast.LENGTH_SHORT).show();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean isChecked = !active_list.get(toIndex).isChecked;
+                        active_list.get(toIndex).isChecked = isChecked;
+                    }
+                });
             }
 
             @Override
@@ -98,6 +107,18 @@ public class MainActivity extends AppCompatActivity {
         // 기본 영어로 선택.
         langSpinner2.setSelection(toIndex,false);
         toIndex = 1;
+        
+        // list view 설정
+        active_list = new ArrayList<>();
+        for (int i = 0; i < languages.size(); i++) {
+            if (i == 1)
+                active_list.add(new LangVO(i,languages.get(i),"",true));
+            else
+                active_list.add(new LangVO(i,languages.get(i),"",false));
+        }
+        CustomAdapter adapter2 = new CustomAdapter(this, R.layout.text_item, active_list);
+        listView.setAdapter(adapter2);        
+        
 
         btnTrans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,14 +126,37 @@ public class MainActivity extends AppCompatActivity {
                 TextView tv = findViewById(R.id.txtquestion);
                 final String target = tv.getText().toString();
 
-                new Thread(new Runnable() {
+                startTranslate(tv.getText().toString());
+
+                handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            // 1. set connect with papago
+                        ListView listView = findViewById(R.id.list_view);
+                        CustomAdapter adapter2 = new CustomAdapter(MainActivity.this, R.layout.text_item, active_list);
+                        listView.setAdapter(adapter2);
+                    }
+                });
+            }
+        });
+    }
+
+    public void startTranslate(String sourceText) {
+        final String target = sourceText;
+
+        Thread thr = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 1. set connect with papago
 //                            String text = URLEncoder.encode("만나서 반갑습니다.", "UTF-8");
-                            String text = URLEncoder.encode(target,"UTF-8");
-                            String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+                    String text = URLEncoder.encode(target,"UTF-8");
+                    String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+
+                    for (int i = 0; i < active_list.size(); i++) {
+                        int from = fromIndex;
+                        int to = i;
+
+                        if (active_list.get(i).isChecked) {
                             URL url = new URL(apiURL);
                             HttpURLConnection con = (HttpURLConnection)url.openConnection();
                             con.setRequestMethod("POST");
@@ -121,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
 
                             // 2. post request
                             String postParams = "source=";
-                            postParams += keywords.get(fromIndex);
+                            postParams += keywords.get(from);
                             postParams += "&target=";
-                            postParams += keywords.get(toIndex);
+                            postParams += keywords.get(to);
                             postParams += "&text=";
                             postParams += text;
 
@@ -153,35 +197,38 @@ public class MainActivity extends AppCompatActivity {
                             final String translated = res_obj.getString("translatedText");
 
                             // 4. print the translated text
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    EditText txtanswer = findViewById(R.id.txtanswer);
-                                    txtanswer.setText(translated);
-                                }
-                            });
+                            active_list.get(to).content = translated;
 
-                            Log.e("from",fromIndex + " ");
-                            Log.e("to",toIndex + " ");
+                            Log.e("from",from + " ");
+                            Log.e("to",to + " ");
                             Log.e("text",translated);
-
-                        } catch (Exception e) {
-
-                            // 4. print the translated text
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    EditText txtanswer = findViewById(R.id.txtanswer);
-                                    txtanswer.setText(getString(R.string.not_support) + ", " + languages.get(fromIndex) + " to " + languages.get(toIndex));
-                                }
-                            });
-
-                            System.out.println(e);
+                        }
+                        else {
+                            active_list.get(to).content = "";
                         }
                     }
-                }).start();
+
+                } catch (Exception e) {
+
+                    // 4. print the translated text
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            active_list.get(to).content = getString(R.string.not_support) + ", " + languages.get(from) + " to " + languages.get(to);
+//                        }
+//                    });
+
+                    System.out.println(e);
+                }
             }
         });
+        thr.start();
 
+        try {
+            thr.join();
+        } catch (InterruptedException e) {
+            Log.e("Interrupt","Interrupt Exception happend.");
+        }
     }
+
 }

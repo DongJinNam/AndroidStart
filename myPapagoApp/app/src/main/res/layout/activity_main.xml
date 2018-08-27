@@ -90,36 +90,43 @@
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/tv_output"
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ff0000"
-        android:text="출력" />
+        android:id="@+id/list_view">
 
-    <ScrollView
-        android:id="@+id/sv_output"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
-        android:fillViewport="true">
+    </ListView>
+    <!---->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_output"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="#ff0000"-->
+        <!--android:text="출력" />-->
+
+    <!--<ScrollView-->
+        <!--android:id="@+id/sv_output"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:fillViewport="true">-->
 
 
-        <EditText
-            android:inputType="textMultiLine"
-            android:id="@+id/txtanswer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:imeOptions="actionDone"
-            android:lines="5"
-            android:scrollHorizontally="false"
-            android:scrollbars="vertical"
-            android:textSize="15sp"
-            android:singleLine="false"/>
+        <!--<EditText-->
+            <!--android:inputType="textMultiLine"-->
+            <!--android:id="@+id/txtanswer"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#ffffff"-->
+            <!--android:imeOptions="actionDone"-->
+            <!--android:lines="5"-->
+            <!--android:scrollHorizontally="false"-->
+            <!--android:scrollbars="vertical"-->
+            <!--android:textSize="15sp"-->
+            <!--android:singleLine="false"/>-->
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
 </LinearLayout>
