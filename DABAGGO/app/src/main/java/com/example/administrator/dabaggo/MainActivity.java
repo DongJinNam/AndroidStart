@@ -1,6 +1,7 @@
 package com.example.administrator.dabaggo;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -19,23 +20,33 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
     // Added by NDJ <start> 18.08.27
-    final String clientId = "NAobSAafX516i7HN0sKs";
-    final String clientSecret = "sQIGQOACoF";
+    String clientId = ""; // papago open api 사용을 위한 client id
+    String clientSecret = ""; // papago open api 사용을 위한 client secret key
     List <String> languages;
     List <String> keywords;
     List <LangVO> active_list;
@@ -81,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
 
         // Added by NDJ <start> 18.08.27
+
+        clientId = getResources().getString(R.string.papago_client_id);
+        clientSecret = getResources().getString(R.string.papago_client_secret);
+
         EditText txtquestion = findViewById(R.id.txtquestion);
         Button btnTrans = findViewById(R.id.btnTrans);
         listView = findViewById(R.id.list_view);
@@ -156,83 +171,111 @@ public class MainActivity extends AppCompatActivity {
 
     public void startTranslate(String sourceText) {
         final String target = sourceText;
+        final String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
 
-        Thread thr = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // 1. set connect with papago
-                    String text = URLEncoder.encode(target,"UTF-8");
-                    String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+        // papago api와 통신하기 위한 쓰레드 처리.
+        ExecutorService exeService = Executors.newFixedThreadPool(5);
+        for (int i = 0; i < active_list.size(); i++) {
+            final int idx = i;
+            exeService.execute(new Runnable() {
+                @Override
+                public void run() {
 
-                    for (int i = 0; i < active_list.size(); i++) {
-                        LangVO item = active_list.get(i);
+                    try {
+                        final String text = URLEncoder.encode(target,"UTF-8");
+
+                        LangVO item = active_list.get(idx);
                         int from = fromIndex;
                         int to = item.index;
 
-                        if (item.isChecked) {
-                            URL url = new URL(apiURL);
-                            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-                            con.setRequestMethod("POST");
-                            con.setRequestProperty("X-Naver-Client-Id", clientId);
-                            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-
-                            // 2. post request
-                            String postParams = "source=";
-                            postParams += keywords.get(from);
-                            postParams += "&target=";
-                            postParams += keywords.get(to);
-                            postParams += "&text=";
-                            postParams += text;
-
-                            //String postParams = "source=ko&target=en&text=" + text;
-                            con.setDoOutput(true);
-                            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-                            wr.writeBytes(postParams);
-                            wr.flush();
-                            wr.close();
-                            int responseCode = con.getResponseCode();
-                            BufferedReader br;
-                            if(responseCode==200) { // 정상 호출
-                                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                            } else {  // 에러 발생
-                                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-                            }
-                            String inputLine;
-                            StringBuffer response = new StringBuffer();
-                            while ((inputLine = br.readLine()) != null) {
-                                response.append(inputLine);
-                            }
-                            br.close();
-
-                            // 3. get json data
-                            JSONObject msg_obj = new JSONObject(response.toString()).getJSONObject("message");
-                            JSONObject res_obj = msg_obj.getJSONObject("result");
-                            final String translated = res_obj.getString("translatedText");
-
-                            // 4. print the translated text
-                            active_list.get(i).content = translated;
-
-                            Log.e("from",from + " ");
-                            Log.e("to",to + " ");
-                            Log.e("text",translated);
+                        // 참조 언어와 타겟 언어가 동일한 경우.
+                        if (from == to) {
+                            active_list.get(idx).content = target;
                         }
                         else {
-                            active_list.get(i).content = "";
+                            if (item.isChecked) {
+
+                                try {
+                                    URL url = new URL(apiURL);
+                                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                                    con.setRequestMethod("POST");
+                                    con.setRequestProperty("X-Naver-Client-Id", clientId);
+                                    con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+
+                                    // 2. post request
+                                    String postParams = "source=";
+                                    postParams += keywords.get(from);
+                                    postParams += "&target=";
+                                    postParams += keywords.get(to);
+                                    postParams += "&text=";
+                                    postParams += text;
+
+                                    //String postParams = "source=ko&target=en&text=" + text;
+                                    con.setDoOutput(true);
+                                    DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+                                    wr.writeBytes(postParams);
+                                    wr.flush();
+                                    wr.close();
+                                    int responseCode = con.getResponseCode();
+                                    BufferedReader br;
+                                    if(responseCode==200) { // 정상 호출
+                                        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                                    } else {  // 에러 발생
+                                        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                                    }
+                                    String inputLine;
+                                    StringBuffer response = new StringBuffer();
+                                    while ((inputLine = br.readLine()) != null) {
+                                        response.append(inputLine);
+                                    }
+                                    br.close();
+
+                                    Log.e("response",response.toString());
+
+                                    // 3. get json data
+                                    JSONObject result_obj = new JSONObject(response.toString());
+
+                                    if (result_obj.has("message")) {
+                                        JSONObject msg_obj = result_obj.getJSONObject("message");
+                                        JSONObject res_obj = msg_obj.getJSONObject("result");
+                                        final String translated = res_obj.getString("translatedText");
+
+                                        // 4. print the translated text
+                                        active_list.get(idx).content = translated;
+
+                                        Log.e("from",from + " ");
+                                        Log.e("to",to + " ");
+                                        Log.e("text",translated);
+                                    }
+                                    else {
+                                        // 4. print the translated text
+                                        active_list.get(idx).content = result_obj.getString("errorMessage") + "/" + languages.get(from) + "->" + languages.get(to);
+                                    }
+
+                                }
+                                catch (Exception e) {
+                                    // 4. print the translated text
+                                    active_list.get(idx).content = "Not Supported Type from " + languages.get(from) + " to " + languages.get(to);
+                                }
+                            }
+                            else {
+                                active_list.get(idx).content = "";
+                            }
                         }
+
+
+
+                    } catch (Exception e) {
+                        Log.e("Exception","Exception happened.");
                     }
-
-                } catch (Exception e) {
-                    Log.e("Exception","Exception happened.");
                 }
-            }
-        });
-        thr.start();
-
-        try {
-            thr.join();
-        } catch (InterruptedException e) {
-            Log.e("Interrupt","Interrupt Exception happend.");
+            });
         }
+        exeService.shutdown();
+        while (!exeService.isTerminated()) {
+        }
+        // 위에까지가 쓰레드가 모두 처리되길 기다리는 과정.
+        Log.e("Process","Finished");
     }
+
 }
