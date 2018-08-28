@@ -77,7 +77,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
                 Intent intent = new Intent();
                 intent.putExtra("lang", results);
-                setResult(0, intent);
+                setResult(1, intent);
                 finish();
                 break;
 

@@ -1,5 +1,7 @@
 package com.example.administrator.dabaggo;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +22,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kakao.sdk.newtoneapi.SpeechRecognizerActivity;
+import com.kakao.sdk.newtoneapi.SpeechRecognizerClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,7 +69,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case 0:
+            case RESULT_OK:
+                ArrayList<String> results = data.getStringArrayListExtra(VoiceRecoActivity.EXTRA_KEY_RESULT_ARRAY);
+                final String ans = results.get(0);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        EditText txtquestion = (EditText) findViewById(R.id.txtquestion);
+                        txtquestion.setText(ans);
+                    }
+                });
+                break;
+            case RESULT_CANCELED:
+                if (data == null) break;
+                // 에러 발생 시 처리 코드
+                int errorCode = data.getIntExtra(VoiceRecoActivity.EXTRA_KEY_ERROR_CODE, -1);
+                String errorMsg = data.getStringExtra(VoiceRecoActivity.EXTRA_KEY_ERROR_MESSAGE);
+
+                if (errorCode != -1 && !TextUtils.isEmpty(errorMsg)) {
+                    new AlertDialog.Builder(this).
+                            setMessage(errorMsg).
+                            setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }).
+                            show();
+                }
+                break;
+            case 1:
                 if (data != null && data.getSerializableExtra("lang") != null) {
                     ArrayList<Integer> r = (ArrayList<Integer>) data.getSerializableExtra("lang");
                     active_list.clear(); // initialize list.
@@ -100,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText txtquestion = findViewById(R.id.txtquestion);
         Button btnTrans = findViewById(R.id.btn_search);
+        Button btnRecord = findViewById(R.id.btn_record);
         listView = findViewById(R.id.list_view);
 
         // Open API 경고 문구.
@@ -134,6 +170,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Added by NDJ <end> 18.08.27
+        btnRecord.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VoiceRecoActivity.class);
+                String serviceType = SpeechRecognizerClient.SERVICE_TYPE_WEB;
+                i.putExtra(SpeechRecognizerActivity.EXTRA_KEY_SERVICE_TYPE, serviceType);
+                startActivityForResult(i, 0);
+            }
+        });
     }
 
     @Override
@@ -154,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 intent.putExtra("lang", results);
 
-                startActivityForResult(intent, 0);
+                startActivityForResult(intent, 1);
                 return true;
         }
 
