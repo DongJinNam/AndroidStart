@@ -64,12 +64,14 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 0:
-                ArrayList<Integer> r = (ArrayList<Integer>) data.getSerializableExtra("lang");
-                active_list.clear(); // initialize list.
-                for (int i = 0; i < r.size(); i++) {
-                    int idx = r.get(i);
-                    LangVO item = new LangVO(idx,languages.get(idx),"",true);
-                    active_list.add(item);
+                if (data != null && data.getSerializableExtra("lang") != null) {
+                    ArrayList<Integer> r = (ArrayList<Integer>) data.getSerializableExtra("lang");
+                    active_list.clear(); // initialize list.
+                    for (int i = 0; i < r.size(); i++) {
+                        int idx = r.get(i);
+                        LangVO item = new LangVO(idx,languages.get(idx),"",true);
+                        active_list.add(item);
+                    }
                 }
                 // listview ui 초기화 part
                 contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         clientSecret = getResources().getString(R.string.papago_client_secret);
 
         EditText txtquestion = findViewById(R.id.txtquestion);
-        Button btnTrans = findViewById(R.id.btnTrans);
+        Button btnTrans = findViewById(R.id.btn_search);
         listView = findViewById(R.id.list_view);
 
         // Open API 경고 문구.
@@ -106,23 +108,6 @@ public class MainActivity extends AppCompatActivity {
         // array.xml에서 string list로 가져옴.
         languages = Arrays.asList(getResources().getStringArray(R.array.language));
         keywords = Arrays.asList(getResources().getStringArray(R.array.keyword));
-
-        langAdapter = ArrayAdapter.createFromResource(this,R.array.language,android.R.layout.simple_spinner_dropdown_item);
-        langSpinner = findViewById(R.id.sp_from_type);
-        langSpinner.setAdapter(langAdapter);
-        langSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String str = getString(R.string.source_lan) + (String) langAdapter.getItem(position);
-                fromIndex = position;
-                Toast.makeText(MainActivity.this, str,Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         // list view 설정
         active_list = new ArrayList<>();
@@ -162,6 +147,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_setting:
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+
+                ArrayList<Integer> results = new ArrayList<>();
+                for (int i = 0; i < active_list.size(); i++) {
+                    results.add(active_list.get(i).index);
+                }
+                intent.putExtra("lang", results);
+
                 startActivityForResult(intent, 0);
                 return true;
         }

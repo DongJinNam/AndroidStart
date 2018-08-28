@@ -6,4 +6,5 @@
     <string name="target_lan">전환 언어 :  </string>
     <string name="papago_client_id">03FvpK1PkVlZ1CVU3cnk</string>
     <string name="papago_client_secret">ikqCKI9e8h</string>
+    <string name="edittext_hint">번역할 내용을 입력하세요.</string>
 </resources>

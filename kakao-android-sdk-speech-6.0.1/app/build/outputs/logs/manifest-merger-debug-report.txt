@@ -1,0 +1,184 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:2:1-16:12
+MERGED from [com.android.support:appcompat-v7:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.0.0.aar\f819386bd65439e9a8090fe462f568eb\AndroidManifest.xml:17:1-27:12
+MERGED from [com.kakao.sdk:newtone.core:1.1.1.OpenApi] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone.core-1.1.1.OpenApi.aar\754fee612418f3a78a0325b5376e7fec\AndroidManifest.xml:2:1-10:12
+MERGED from [com.kakao.sdk:network:1.1.36] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\network-1.1.36.aar\a3f32805af0c8e4a99424ebb3c085bd4\AndroidManifest.xml:2:1-12:12
+MERGED from [com.kakao.sdk:util:1.2.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\util-1.2.2.aar\054c4c4b7f3395e82f44b3ec66d33e16\AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.0.0.aar\32da997dcfd4d976a0d4be23f36b50cb\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.0.0.aar\0d71b6dfed01c181afd13e593591a954\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.0.0.aar\d8669537c20214a3fdcc87d078138eaf\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.0.0.aar\337e9efaea965fe6bdfb27f9cd95f86e\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.0.0.aar\ef714068dd119ec109342ac8ffc917a8\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.0.0.aar\dc36b8b4310662f576e0c797f9f1d720\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.0.0.aar\a92d4723051b67d360c5433dc9b12b9e\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.0.0.aar\ddf01b25de4899b35bf3b0cdeca8f31d\AndroidManifest.xml:17:1-27:12
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+	package
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:4:5-43
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:2:1-55:12
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:3:5-63
+uses-permission#android.permission.INTERNET
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:6:5-67
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:11:5-67
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:7:5-71
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:12:5-71
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:12:5-71
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:7:22-68
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:8:5-79
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:13:5-79
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.BLUETOOTH
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:10:5-68
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:14:5-68
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:14:5-68
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:10:22-65
+application
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:20:5-53:19
+MERGED from [com.android.support:appcompat-v7:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.0.0.aar\f819386bd65439e9a8090fe462f568eb\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.0.0.aar\f819386bd65439e9a8090fe462f568eb\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.0.0.aar\32da997dcfd4d976a0d4be23f36b50cb\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.0.0.aar\32da997dcfd4d976a0d4be23f36b50cb\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.0.0.aar\0d71b6dfed01c181afd13e593591a954\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.0.0.aar\0d71b6dfed01c181afd13e593591a954\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.0.0.aar\d8669537c20214a3fdcc87d078138eaf\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.0.0.aar\d8669537c20214a3fdcc87d078138eaf\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.0.0.aar\337e9efaea965fe6bdfb27f9cd95f86e\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.0.0.aar\337e9efaea965fe6bdfb27f9cd95f86e\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.0.0.aar\ef714068dd119ec109342ac8ffc917a8\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.0.0.aar\ef714068dd119ec109342ac8ffc917a8\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.0.0.aar\dc36b8b4310662f576e0c797f9f1d720\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.0.0.aar\dc36b8b4310662f576e0c797f9f1d720\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.0.0.aar\a92d4723051b67d360c5433dc9b12b9e\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.0.0.aar\a92d4723051b67d360c5433dc9b12b9e\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.0.0.aar\ddf01b25de4899b35bf3b0cdeca8f31d\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.0.0.aar\ddf01b25de4899b35bf3b0cdeca8f31d\AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:21:9-41
+	android:icon
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:22:9-46
+	android:allowBackup
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:23:9-35
+	android:theme
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:24:9-40
+activity#com.kakao.sdk.newtone.sample.SplashActivity
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:26:9-34:20
+	android:screenOrientation
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:29:13-49
+	android:label
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:28:13-45
+	android:theme
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:27:13-47
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:26:19-77
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:30:13-33:29
+action#android.intent.action.MAIN
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:31:17-69
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:31:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:32:17-77
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:32:27-74
+activity#com.kakao.sdk.newtone.sample.SpeechSampleActivity
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:36:9-41:20
+	android:screenOrientation
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:39:13-49
+	android:label
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:37:13-47
+	android:theme
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:38:13-71
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:36:19-83
+activity#com.kakao.sdk.newtone.sample.VoiceRecoActivity
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:43:9-44:73
+	android:theme
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:44:13-71
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:43:19-80
+activity#com.kakao.sdk.newtone.sample.TextToSpeechActivity
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:46:9-48:73
+	android:screenOrientation
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:47:13-49
+	android:theme
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:48:13-71
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:46:19-83
+meta-data#com.kakao.sdk.AppKey
+ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:50:9-52:53
+	android:value
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:52:13-50
+	android:name
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml:51:13-48
+uses-sdk
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:7:5-9:41
+MERGED from [com.kakao.sdk:newtone:6.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone-6.0.1.aar\4aef504b50737587e8ac315b6fc974cd\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.0.0.aar\f819386bd65439e9a8090fe462f568eb\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.0.0.aar\f819386bd65439e9a8090fe462f568eb\AndroidManifest.xml:21:5-23:78
+MERGED from [com.kakao.sdk:newtone.core:1.1.1.OpenApi] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone.core-1.1.1.OpenApi.aar\754fee612418f3a78a0325b5376e7fec\AndroidManifest.xml:6:5-8:41
+MERGED from [com.kakao.sdk:newtone.core:1.1.1.OpenApi] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\newtone.core-1.1.1.OpenApi.aar\754fee612418f3a78a0325b5376e7fec\AndroidManifest.xml:6:5-8:41
+MERGED from [com.kakao.sdk:network:1.1.36] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\network-1.1.36.aar\a3f32805af0c8e4a99424ebb3c085bd4\AndroidManifest.xml:8:5-10:41
+MERGED from [com.kakao.sdk:network:1.1.36] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\network-1.1.36.aar\a3f32805af0c8e4a99424ebb3c085bd4\AndroidManifest.xml:8:5-10:41
+MERGED from [com.kakao.sdk:util:1.2.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\util-1.2.2.aar\054c4c4b7f3395e82f44b3ec66d33e16\AndroidManifest.xml:11:5-13:41
+MERGED from [com.kakao.sdk:util:1.2.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\util-1.2.2.aar\054c4c4b7f3395e82f44b3ec66d33e16\AndroidManifest.xml:11:5-13:41
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.0.0.aar\32da997dcfd4d976a0d4be23f36b50cb\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.0.0.aar\32da997dcfd4d976a0d4be23f36b50cb\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.0.0.aar\0d71b6dfed01c181afd13e593591a954\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.0.0.aar\0d71b6dfed01c181afd13e593591a954\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.0.0.aar\d8669537c20214a3fdcc87d078138eaf\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-vector-drawable:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.0.0.aar\d8669537c20214a3fdcc87d078138eaf\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.0.0.aar\337e9efaea965fe6bdfb27f9cd95f86e\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.0.0.aar\337e9efaea965fe6bdfb27f9cd95f86e\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.0.0.aar\ef714068dd119ec109342ac8ffc917a8\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.0.0.aar\ef714068dd119ec109342ac8ffc917a8\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.0.0.aar\dc36b8b4310662f576e0c797f9f1d720\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.0.0.aar\dc36b8b4310662f576e0c797f9f1d720\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.0.0.aar\a92d4723051b67d360c5433dc9b12b9e\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.0.0.aar\a92d4723051b67d360c5433dc9b12b9e\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.0.0.aar\ddf01b25de4899b35bf3b0cdeca8f31d\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.0.0.aar\ddf01b25de4899b35bf3b0cdeca8f31d\AndroidManifest.xml:21:5-23:58
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.0.0.aar\f819386bd65439e9a8090fe462f568eb\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		ADDED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\git\upload_git\AndroidStart\kakao-android-sdk-speech-6.0.1\app\src\main\AndroidManifest.xml

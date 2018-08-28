@@ -23,13 +23,13 @@ import java.util.List;
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
+        finish();
     }
 
     private static final String TAG = "SettingActivity";
     Button mBtnAdd;
     private ListView mList;
-    private String[] data = {"영어(en)", "중국어(zh)", "스페인어(es)", "프랑스어(fr)", "베트남어(vi)", "태국어(th)", "인도네시아어(id)", "일본어(ja)"};
     List <String> languages;
 
     @Override
@@ -50,6 +50,15 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
         mList.setAdapter(adapter);
         getSupportActionBar().setElevation(0);
+
+        // 이전에 선택된 언어는 미리 체크되도록 설정. by NDJ 18.08.28
+        if (getIntent().getSerializableExtra("lang") != null) {
+            ArrayList<Integer> r = (ArrayList<Integer>) getIntent().getSerializableExtra("lang");
+            for (int i = 0; i < r.size(); i++) {
+                int idx = r.get(i);
+                mList.setItemChecked(idx,true);
+            }
+        }
     }
 
     @Override

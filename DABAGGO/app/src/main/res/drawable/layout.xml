@@ -12,6 +12,7 @@
     <item android:drawable = "@drawable/s6" android:duration="210"/>
     <item android:drawable = "@drawable/s7" android:duration="210"/>
     <item android:drawable = "@drawable/s8" android:duration="210"/>
+    <item android:drawable = "@drawable/s1" android:duration="210"/>
 
 
 </animation-list>

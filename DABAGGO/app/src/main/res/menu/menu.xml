@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/action_setting"
-        android:icon="@drawable/earth"
+        android:icon="@drawable/list"
         android:title="setting"
         app:showAsAction="ifRoom" />
 

@@ -8,8 +8,11 @@
         android:id="@+id/tv_output"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ff0000"
-        android:text="출력" />
+        android:layout_marginLeft="15dp"
+        android:paddingTop="5dp"
+        android:text="출력"
+        android:textColor="@color/colorMainGreen"
+        android:textStyle="bold" />
 
     <ScrollView
         android:id="@+id/sv_output"
@@ -24,13 +27,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
+            android:gravity="center_horizontal"
             android:imeOptions="actionDone"
             android:lines="5"
+            android:paddingTop="10dp"
             android:scrollHorizontally="false"
             android:scrollbars="vertical"
-            android:textSize="15sp"
-            android:gravity="center_horizontal"
-            android:singleLine="false"/>
+            android:singleLine="false"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </ScrollView>
 </LinearLayout>

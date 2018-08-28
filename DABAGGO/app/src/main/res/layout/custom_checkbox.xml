@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:layout_width="wrap_content">
+
+    <!-- 체크박스 해제상태 -->
+    <item android:drawable="@drawable/ic_check_transparent_24dp"
+          android:state_checked="false" />
+    <!-- 체크박스 선택상태 -->
+    <item android:drawable="@drawable/ic_check_black_24dp"
+          android:state_checked="true" />
+    <!-- default state -->
+    <item android:drawable="@drawable/ic_check_transparent_24dp" />
+</selector>
+
