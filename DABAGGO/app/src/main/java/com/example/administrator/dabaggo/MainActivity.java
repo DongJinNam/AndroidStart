@@ -1,8 +1,11 @@
 package com.example.administrator.dabaggo;
 
 import android.app.AlertDialog;
+import android.appwidget.AppWidgetManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,8 +34,12 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -40,6 +47,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -53,9 +61,14 @@ public class MainActivity extends AppCompatActivity {
     // Added by NDJ <start> 18.08.27
     String clientId = ""; // papago open api 사용을 위한 client id
     String clientSecret = ""; // papago open api 사용을 위한 client secret key
+    String css_clientId = ""; // 음성 번역을 위한 api 사용을 위한 client id
+    String css_clientSecret = ""; // 음성 번역을 위한 api 사용을 위한 client secret key
     List <String> languages;
     List <String> keywords;
     List <LangVO> active_list;
+
+    int charCount = 0; // CSS API 몇 자를 사용했는지 check
+    final int limitMAX = 200; // CSS API 사용 제한 글자수
 
     Handler handler = new Handler();
     int fromIndex = 0; // 시작 인덱스[한국어]
@@ -129,9 +142,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
 
         // Added by NDJ <start> 18.08.27
-
         clientId = getResources().getString(R.string.papago_client_id);
         clientSecret = getResources().getString(R.string.papago_client_secret);
+        css_clientId = getResources().getString(R.string.naver_client_id);
+        css_clientSecret = getResources().getString(R.string.naver_client_secret);
 
         EditText txtquestion = findViewById(R.id.txtquestion);
         Button btnTrans = findViewById(R.id.btn_search);
@@ -211,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
     public void startTranslate(String sourceText) {
         final String target = sourceText;
         final String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+
 
         // papago api와 통신하기 위한 쓰레드 처리.
         ExecutorService exeService = Executors.newFixedThreadPool(5);
@@ -302,8 +317,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
 
-
-
                     } catch (Exception e) {
                         Log.e("Exception","Exception happened.");
                     }
@@ -315,6 +328,37 @@ public class MainActivity extends AppCompatActivity {
         }
         // 위에까지가 쓰레드가 모두 처리되길 기다리는 과정.
         Log.e("Process","Finished");
+
+
+        // start by SMH
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.administrator.dabaggo.sharedPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("status_size");
+        editor.putInt("status_size", active_list.size());
+
+        for (int i = 0; i < active_list.size(); i++) {
+            editor.remove("status_lang_" + i);
+            editor.remove("status_cnt_" + i);
+
+            editor.putString("status_lang_" + i, active_list.get(i).lang);
+
+            editor.putString("status_cnt_" + i, active_list.get(i).content);
+
+        }
+
+        for (int i = 0; i < active_list.size(); i++) {
+            Log.i("LangContent :: ", active_list.get(i).lang + "" + active_list.get(i).content);
+        }
+
+        editor.apply();
+        editor.commit();
+
+        Intent intent = new Intent(MainActivity.this, WidgetProvider.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        intent.putExtra("data", "ddddd");
+        MainActivity.this.sendBroadcast(intent);
+
+        // end by SMH
     }
 
 }

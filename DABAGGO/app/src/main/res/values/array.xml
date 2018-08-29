@@ -25,4 +25,19 @@
         <item>th</item>
         <item>fr</item>
     </string-array>
+
+    <string-array name="voice_man">
+        <item>jinho</item>
+        <item>matt</item>
+        <item>shinji</item>
+        <item>liangliang</item>
+    </string-array>
+
+    <string-array name="voice_woman">
+        <item>mijin</item>
+        <item>clara</item>
+        <item>yuri</item>
+        <item>meimei</item>
+    </string-array>
+
 </resources>
