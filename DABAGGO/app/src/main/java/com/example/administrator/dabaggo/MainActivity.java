@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
     int fromIndex = 0; // 시작 인덱스[한국어]
     ArrayAdapter langAdapter = null;
     CustomAdapter contentAdapter = null;
-    Spinner langSpinner = null;
     ListView listView;
     // Added by NDJ <end> 18.08.27
 
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case RESULT_OK:
+            case RESULT_OK: // kakao 음성 api로부터 데이터를 성공적으로 얻어오는 경우
                 ArrayList<String> results = data.getStringArrayListExtra(VoiceRecoActivity.EXTRA_KEY_RESULT_ARRAY);
                 final String ans = results.get(0);
                 handler.post(new Runnable() {
@@ -80,11 +79,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case RESULT_CANCELED:
+            case RESULT_CANCELED: // kakao 음성 api로부터 데이터 얻어오기 실패
                 if (data == null) break;
                 // 에러 발생 시 처리 코드
                 int errorCode = data.getIntExtra(VoiceRecoActivity.EXTRA_KEY_ERROR_CODE, -1);
-                String errorMsg = data.getStringExtra(VoiceRecoActivity.EXTRA_KEY_ERROR_MESSAGE);
+//                String errorMsg = data.getStringExtra(VoiceRecoActivity.EXTRA_KEY_ERROR_MESSAGE);
+                String errorMsg = getResources().getString(R.string.text_get_fail);
 
                 if (errorCode != -1 && !TextUtils.isEmpty(errorMsg)) {
                     new AlertDialog.Builder(this).
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             show();
                 }
                 break;
-            case 1:
+            case 1: // Setting Activity
                 if (data != null && data.getSerializableExtra("lang") != null) {
                     ArrayList<Integer> r = (ArrayList<Integer>) data.getSerializableExtra("lang");
                     active_list.clear(); // initialize list.
@@ -150,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
         contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
         listView.setAdapter(contentAdapter);
 
-
         btnTrans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Added by NDJ <end> 18.08.27
+
+        // Added by NDJ <start> 18.08.29 카카오 음성 인식 기능 추가
         btnRecord.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, 0);
             }
         });
+        // Added by NDJ <end> 18.08.29
     }
 
     @Override

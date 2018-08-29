@@ -29,13 +29,15 @@
             android:background="#ffffff"
             android:gravity="center_horizontal"
             android:imeOptions="actionDone"
-            android:lines="5"
             android:paddingTop="10dp"
             android:scrollHorizontally="false"
             android:scrollbars="vertical"
             android:singleLine="false"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:minLines="1"
+            android:maxLines="30"
+            android:focusable="false"/>
 
     </ScrollView>
 </LinearLayout>

@@ -18,12 +18,9 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomAdapter extends BaseAdapter {
-
-
     MainActivity ma;
     int layout;
     List<LangVO> lang_list;
-
 
     public CustomAdapter(MainActivity ma, int layout, List<LangVO> lang_list) {
         this.ma = ma;
@@ -71,4 +68,5 @@ public class CustomAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
+
 }
