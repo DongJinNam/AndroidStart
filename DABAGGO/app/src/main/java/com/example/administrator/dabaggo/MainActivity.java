@@ -329,10 +329,12 @@ public class MainActivity extends AppCompatActivity {
         // 위에까지가 쓰레드가 모두 처리되길 기다리는 과정.
         Log.e("Process","Finished");
 
-
-        // start by SMH
+        // start by SMH, To make widget process
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.administrator.dabaggo.sharedPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.remove("txt_lang");
+        editor.putString("txt_lang", sourceText);
         editor.remove("status_size");
         editor.putInt("status_size", active_list.size());
 
@@ -357,8 +359,7 @@ public class MainActivity extends AppCompatActivity {
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         intent.putExtra("data", "ddddd");
         MainActivity.this.sendBroadcast(intent);
-
-        // end by SMH
+        // end by SMH To make widget process
     }
 
 }
