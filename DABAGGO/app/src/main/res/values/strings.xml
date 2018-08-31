@@ -10,5 +10,5 @@
     <string name="papago_client_secret">ikqCKI9e8h</string>
     <string name="edittext_hint">번역할 내용을 입력하세요.</string>
     <string name="text_get_fail">음성 인식에 실패하였습니다.</string>
-    <string name="access_deny">음성 번역 기능은 200자로 제한되며, 언어는 한국어,영어,일본어,중국어만 가능합니다.</string>
+    <string name="access_deny">음성 번역 기능은 1000자로 제한되며, 언어는 한국어,영어,일본어,중국어만 가능합니다.</string>
 </resources>

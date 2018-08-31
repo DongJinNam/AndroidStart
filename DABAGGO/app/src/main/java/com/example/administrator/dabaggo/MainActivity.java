@@ -32,14 +32,21 @@ import com.kakao.sdk.newtoneapi.SpeechRecognizerClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     List <LangVO> active_list;
 
     int charCount = 0; // CSS API 몇 자를 사용했는지 check
-    final int limitMAX = 200; // CSS API 사용 제한 글자수
+    final int limitMAX = 1000; // CSS API 사용 제한 글자수
 
     Handler handler = new Handler();
     int fromIndex = 0; // 시작 인덱스[한국어]
@@ -121,9 +128,8 @@ public class MainActivity extends AppCompatActivity {
                         active_list.add(item);
                     }
                 }
-                // listview ui 초기화 part
-                contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
-                listView.setAdapter(contentAdapter);
+                setListView();
+                saveFile();
                 break;
             default:
                 break;
@@ -152,17 +158,15 @@ public class MainActivity extends AppCompatActivity {
         Button btnRecord = findViewById(R.id.btn_record);
         listView = findViewById(R.id.list_view);
 
-        // Open API 경고 문구.
-        Toast.makeText(this, getString(R.string.caution), Toast.LENGTH_SHORT).show();
-
         // array.xml에서 string list로 가져옴.
         languages = Arrays.asList(getResources().getStringArray(R.array.language));
         keywords = Arrays.asList(getResources().getStringArray(R.array.keyword));
 
         // list view 설정
         active_list = new ArrayList<>();
-        contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
-        listView.setAdapter(contentAdapter);
+//        contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
+//        listView.setAdapter(contentAdapter);
+//        setListView();
 
         btnTrans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,6 +199,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Added by NDJ <end> 18.08.29
+
+        // setiing.bin file 읽기
+
+        String filePath = getApplicationContext().getFilesDir().getPath().toString()  + "/setting.bin";
+        File set_file = new File(filePath);
+
+        if (set_file.exists()) {
+            readFile();
+        }
+        else {
+            // 기본적으로 영어, 일본어, 중국어 간체를 setting
+            for (int i = 1; i < 4; i++) {
+                LangVO item = new LangVO(i,languages.get(i),"",true);
+                active_list.add(item);
+            }
+        }
+        setListView();
     }
 
     @Override
@@ -225,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
     public void startTranslate(String sourceText) {
         final String target = sourceText;
         final String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-
 
         // papago api와 통신하기 위한 쓰레드 처리.
         ExecutorService exeService = Executors.newFixedThreadPool(5);
@@ -360,6 +380,85 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("data", "ddddd");
         MainActivity.this.sendBroadcast(intent);
         // end by SMH To make widget process
+    }
+
+    // setting.bin 저장 by NDJ 180831
+    public void saveFile() {
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        ObjectOutputStream oout = null;
+
+        try {
+
+            out = new FileOutputStream(getApplicationContext().getFilesDir().getPath().toString()  + "/setting.bin");
+            bout = new BufferedOutputStream(out);
+            oout = new ObjectOutputStream(bout);
+
+            ArrayList<Integer> int_list = new ArrayList<>();
+
+            for (int i = 0; i < active_list.size(); i++) {
+                int_list.add(active_list.get(i).index);
+            }
+
+            oout.writeObject(int_list);
+            oout.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                oout.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    // setting.bin 불러오기 by NDJ 180831
+    public void readFile() {
+        InputStream in = null;
+        BufferedInputStream bin = null;
+        ObjectInputStream oin = null;
+
+        ArrayList<Integer> int_list = new ArrayList<>();
+
+        try {
+            in = new FileInputStream(getApplicationContext().getFilesDir().getPath().toString()  + "/setting.bin");
+            bin = new BufferedInputStream(in);
+            oin = new ObjectInputStream(bin);
+
+            int_list = (ArrayList<Integer>) oin.readObject();
+            active_list.clear(); // initialize list.
+
+            for (int i = 0; i < int_list.size(); i++) {
+                int idx = int_list.get(i);
+                LangVO item = new LangVO(idx,languages.get(idx),"",true);
+                active_list.add(item);
+            }
+
+            oin.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    // list view 초기화
+    public void setListView() {
+        if (active_list != null && active_list.size() > 0) {
+            // listview ui 초기화 part
+            contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
+            listView.setAdapter(contentAdapter);
+        }
     }
 
 }
