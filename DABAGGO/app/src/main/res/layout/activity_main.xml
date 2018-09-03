@@ -18,13 +18,12 @@
             android:layout_marginLeft="15dp"
             android:layout_weight="0.9"
             android:background="#ffffff"
-
             android:hint="@string/edittext_hint"
             android:imeOptions="actionDone"
             android:inputType="textMultiLine"
             android:scrollHorizontally="false"
             android:scrollbars="vertical"
-            android:singleLine="false"
+            android:singleLine="true"
             android:textSize="15sp" />
 
         <Button
@@ -48,7 +47,8 @@
     <ListView
         android:id="@+id/list_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
     </ListView>
 

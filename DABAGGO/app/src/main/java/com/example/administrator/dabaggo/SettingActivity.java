@@ -23,14 +23,14 @@ import java.util.List;
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
         finish();
     }
 
     private static final String TAG = "SettingActivity";
     Button mBtnAdd;
+    Button mBtnCancel;
     private ListView mList;
-    List <String> languages;
+    List<String> languages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +44,27 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         mBtnAdd = findViewById(R.id.btn_add);
         mBtnAdd.setOnClickListener(this);
 
+        mBtnCancel = findViewById(R.id.btn_cancel);
+        mBtnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         mList = findViewById(R.id.list_view);
         mList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, languages);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_checkbox, languages);
 
         mList.setAdapter(adapter);
-        getSupportActionBar().setElevation(0);
+        getSupportActionBar().hide();
 
         // 이전에 선택된 언어는 미리 체크되도록 설정. by NDJ 18.08.28
         if (getIntent().getSerializableExtra("lang") != null) {
             ArrayList<Integer> r = (ArrayList<Integer>) getIntent().getSerializableExtra("lang");
             for (int i = 0; i < r.size(); i++) {
                 int idx = r.get(i);
-                mList.setItemChecked(idx,true);
+                mList.setItemChecked(idx, true);
             }
         }
     }

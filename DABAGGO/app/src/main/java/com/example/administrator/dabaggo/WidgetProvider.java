@@ -8,8 +8,13 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.RemoteViews;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WidgetProvider extends AppWidgetProvider {
     @Override
