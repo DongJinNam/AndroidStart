@@ -164,9 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
         // list view 설정
         active_list = new ArrayList<>();
-//        contentAdapter = new CustomAdapter(this, R.layout.text_item, active_list);
-//        listView.setAdapter(contentAdapter);
-//        setListView();
 
         btnTrans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 active_list.add(item);
             }
         }
+        // list view 설정
         setListView();
     }
 
@@ -438,7 +436,6 @@ public class MainActivity extends AppCompatActivity {
                 LangVO item = new LangVO(idx,languages.get(idx),"",true);
                 active_list.add(item);
             }
-
             oin.close();
 
         } catch (FileNotFoundException e) {
